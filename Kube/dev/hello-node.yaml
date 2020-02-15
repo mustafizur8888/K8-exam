@@ -78,10 +78,10 @@ spec:
     #- app-staging.informatiq.no
 #    secretName: app-staging-informatiq-no-cert-prod
   rules:
-  - host: mustafiz.eastus.cloudapp.azure.com
+  - host: mustafizur.eastus.cloudapp.azure.com
     http:
       paths:           
-      - path: /api/node
+      - path: /
         backend:
           serviceName: etest-service
           servicePort: 80

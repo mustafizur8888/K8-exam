@@ -19,16 +19,14 @@ steps:
 
 - script: |
     echo "$(dockerPassword)" | docker login  $(dockerId).azurecr.io -u $(dockerUsername) --password-stdin
-    docker push $(dockerId).azurecr.io-helloworld:$(VERSION)
-    docker push $(dockerId).azurecr.io-helloworldnode:$(VERSION)
-    docker push $(dockerId).azurecr.io-web:$(VERSION)    
+    docker push $(dockerId).azurecr.io/etest:${VERSION}  
   displayName: "docker publish"
   
 - task: CopyFiles@2
   inputs:
-    sourceFolder: $(Build.SourcesDirectory)/E-Test/
+    sourceFolder: $(Build.SourcesDirectory)/Kube/
     contents: '**/*.*'
-    targetFolder: $(Build.ArtifactStagingDirectory)/E-Test/
+    targetFolder: $(Build.ArtifactStagingDirectory)/Kube/
     
 - task: PublishBuildArtifacts@1
   inputs:
